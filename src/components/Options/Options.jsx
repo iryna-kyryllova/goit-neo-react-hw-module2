@@ -1,23 +1,21 @@
 import css from './Options.module.css'
 
 const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
+  const feedbackOptions = [
+    { label: 'Good', type: 'good' },
+    { label: 'Neutral', type: 'neutral' },
+    { label: 'Bad', type: 'bad' }
+  ]
+
   return (
     <ul className={css.options}>
-      <li>
-        <button type='button' className={css.option} onClick={() => updateFeedback('good')}>
-          Good
-        </button>
-      </li>
-      <li>
-        <button type='button' className={css.option} onClick={() => updateFeedback('neutral')}>
-          Neutral
-        </button>
-      </li>
-      <li>
-        <button type='button' className={css.option} onClick={() => updateFeedback('bad')}>
-          Bad
-        </button>
-      </li>
+      {feedbackOptions.map(({ label, type }) => (
+        <li key={label}>
+          <button type='button' className={css.option} onClick={() => updateFeedback(type)}>
+            {label}
+          </button>
+        </li>
+      ))}
       {totalFeedback > 0 && (
         <li>
           <button type='button' className={css.option} onClick={resetFeedback}>

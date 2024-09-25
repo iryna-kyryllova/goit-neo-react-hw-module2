@@ -1,28 +1,21 @@
 import css from './Feedback.module.css'
 
-const Feedback = ({ feedback, totalFeedback }) => {
+const Feedback = ({ feedback: { good, neutral, bad }, totalFeedback, positiveFeedback }) => {
+  const feedbackItems = [
+    { label: 'Good', value: good },
+    { label: 'Neutral', value: neutral },
+    { label: 'Bad', value: bad },
+    { label: 'Total', value: totalFeedback },
+    { label: 'Positive', value: `${positiveFeedback}%` }
+  ]
   return (
     <ul className={css.feedback}>
-      <li>
-        <span>Good: </span>
-        <strong>{feedback.good}</strong>
-      </li>
-      <li>
-        <span>Neutral: </span>
-        <strong>{feedback.neutral}</strong>
-      </li>
-      <li>
-        <span>Bad: </span>
-        <strong>{feedback.bad}</strong>
-      </li>
-      <li>
-        <span>Total: </span>
-        <strong>{totalFeedback}</strong>
-      </li>
-      <li>
-        <span>Positive: </span>
-        <strong></strong>
-      </li>
+      {feedbackItems.map(({ label, value }) => (
+        <li key={label}>
+          <span>{label}: </span>
+          <strong>{value}</strong>
+        </li>
+      ))}
     </ul>
   )
 }
