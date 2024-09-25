@@ -1,23 +1,23 @@
 import css from './Feedback.module.css'
 
-const Feedback = () => {
+const Feedback = ({ feedback, totalFeedback }) => {
   return (
     <ul className={css.feedback}>
       <li>
         <span>Good: </span>
-        <strong></strong>
+        <strong>{feedback.good}</strong>
       </li>
       <li>
         <span>Neutral: </span>
-        <strong></strong>
+        <strong>{feedback.neutral}</strong>
       </li>
       <li>
         <span>Bad: </span>
-        <strong></strong>
+        <strong>{feedback.bad}</strong>
       </li>
       <li>
         <span>Total: </span>
-        <strong></strong>
+        <strong>{totalFeedback}</strong>
       </li>
       <li>
         <span>Positive: </span>
